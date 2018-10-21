@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'membership',
+    'courses',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -117,4 +119,39 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+# STATIC_URL = '/static/'
+
+# STATICFILES_DIR=[
+#     os.path.join(BASE_DIR,'static_root')
+# ]
+
+# VENV_PATH = os.path.dirname(BASE_DIR)
+# STATIC_ROOT = os.path.join(BASE_DIR,'_static/_')
+# MEDIA_URL = 'media'
+# MEDIA_ROOT =  os.path.join(VENV_PATH,'media_root,')
+
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+REPOSITORY_ROOT = os.path.dirname(BASE_DIR)
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(REPOSITORY_ROOT, 'static/')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, 'media/')
+
+
+
+#stripe keys
+
+if DEBUG:
+    #Testing Purpose
+    STRIPE_PUBLISHABLE_KEY='pk_test_RCDsoE1I6FXHdqAh3NF0mAvY'
+
+    STRIPE_SECRET_KEY='sk_test_OqXDEh7OURPlTeBq8PqMWVLs'
+else:
+    #for live mode
+    STRIPE_PUBLISHABLE_KEY=''
+
+    STRIPE_SECRET_KEY=''
